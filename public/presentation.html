@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hollow Knight: Silksong - Website Presentation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --charcoal: #0a0a0c;
+      --charcoal-light: #12121a;
+      --gold: #c9a227;
+      --gold-hover: #d4af37;
+      --silk-red: #8b1538;
+      --parchment: #e8e4d9;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--charcoal);
+      color: var(--parchment);
+      line-height: 1.6;
+    }
+
+    .font-serif {
+      font-family: 'Cinzel', serif;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background-color: rgba(10, 10, 12, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+    }
+
+    .header-content {
+      max-width: 1152px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.25rem;
+      color: var(--gold);
+    }
+
+    .view-site-btn {
+      padding: 0.5rem 1rem;
+      border: 1px solid rgba(201, 162, 39, 0.3);
+      background: transparent;
+      color: var(--parchment);
+      font-size: 0.875rem;
+      text-decoration: none;
+      transition: border-color 0.3s;
+    }
+
+    .view-site-btn:hover {
+      border-color: rgba(201, 162, 39, 0.6);
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1152px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+
+    /* Title Section */
+    .title-section {
+      text-align: center;
+      margin-bottom: 4rem;
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .title-section h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .title-section p {
+      font-size: 1.25rem;
+      color: rgba(232, 228, 217, 0.6);
+    }
+
+    .title-divider {
+      margin-top: 1.5rem;
+      width: 8rem;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(201, 162, 39, 0.6), transparent);
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Section Cards */
+    .section-card {
+      border: 1px solid rgba(201, 162, 39, 0.2);
+      background-color: var(--charcoal-light);
+      padding: 2rem 2.5rem;
+      margin-bottom: 4rem;
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-number {
+      width: 2.5rem;
+      height: 2.5rem;
+      border: 1px solid rgba(201, 162, 39, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-family: 'Cinzel', serif;
+      font-size: 1.125rem;
+    }
+
+    .section-header h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      color: var(--gold);
+    }
+
+    .section-content {
+      color: rgba(232, 228, 217, 0.8);
+    }
+
+    .section-content p {
+      margin-bottom: 1rem;
+    }
+
+    .section-content strong {
+      color: var(--parchment);
+    }
+
+    /* Color Palette Grid */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .color-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .color-card {
+      text-align: center;
+      padding: 1rem;
+      border: 1px solid rgba(201, 162, 39, 0.1);
+      background-color: var(--charcoal);
+    }
+
+    .color-swatch {
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+      margin: 0 auto 0.5rem;
+    }
+
+    .color-card span {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(232, 228, 217, 0.5);
+    }
+
+    .color-card p {
+      color: var(--gold);
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+    }
+
+    /* Feature Grid */
+    .feature-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .feature-card {
+      border: 1px solid rgba(201, 162, 39, 0.1);
+      background-color: var(--charcoal);
+      padding: 1.5rem;
+    }
+
+    .feature-card h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.125rem;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .feature-card ul {
+      list-style: none;
+    }
+
+    .feature-card li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      color: rgba(232, 228, 217, 0.7);
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-card li span {
+      color: var(--gold);
+      margin-top: 0.125rem;
+    }
+
+    /* Tech Stack Grid */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .tech-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .tech-card {
+      border: 1px solid rgba(201, 162, 39, 0.1);
+      background-color: var(--charcoal);
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .tech-card p:first-child {
+      color: var(--gold);
+      font-weight: 500;
+    }
+
+    .tech-card p:last-child {
+      font-size: 0.75rem;
+      color: rgba(232, 228, 217, 0.5);
+      margin-top: 0.25rem;
+    }
+
+    /* File Structure */
+    .file-structure {
+      border: 1px solid rgba(201, 162, 39, 0.1);
+      background-color: var(--charcoal);
+      padding: 1.5rem;
+      overflow-x: auto;
+    }
+
+    .file-structure pre {
+      font-family: 'Courier New', monospace;
+      font-size: 0.875rem;
+      color: rgba(232, 228, 217, 0.7);
+      white-space: pre;
+    }
+
+    /* Architecture */
+    .architecture-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.5rem 0;
+    }
+
+    .architecture-row .label {
+      width: 8rem;
+      text-align: right;
+      color: var(--gold);
+      font-size: 0.875rem;
+      flex-shrink: 0;
+    }
+
+    .architecture-row .line {
+      flex: 1;
+      height: 1px;
+      background-color: rgba(201, 162, 39, 0.2);
+    }
+
+    .architecture-row .desc {
+      color: rgba(232, 228, 217, 0.7);
+      font-size: 0.875rem;
+    }
+
+    /* Page Sections */
+    .page-section-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      border: 1px solid rgba(201, 162, 39, 0.1);
+      background-color: var(--charcoal);
+      padding: 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .page-section-item .number {
+      color: var(--gold);
+      font-family: monospace;
+      font-size: 0.875rem;
+      width: 2rem;
+      flex-shrink: 0;
+    }
+
+    .page-section-item .title {
+      color: var(--parchment);
+      font-weight: 500;
+    }
+
+    .page-section-item .description {
+      color: rgba(232, 228, 217, 0.6);
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+    }
+
+    /* Summary Section */
+    .summary-section {
+      text-align: center;
+    }
+
+    .summary-section h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .summary-section p {
+      color: rgba(232, 228, 217, 0.7);
+      max-width: 48rem;
+      margin: 0 auto;
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 2rem;
+      padding: 0.75rem 2rem;
+      background-color: var(--gold);
+      color: var(--charcoal);
+      font-weight: 500;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .cta-button:hover {
+      background-color: var(--gold-hover);
+    }
+
+    .cta-button svg {
+      width: 1rem;
+      height: 1rem;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(201, 162, 39, 0.1);
+      text-align: center;
+      color: rgba(232, 228, 217, 0.4);
+      font-size: 0.875rem;
+    }
+
+    footer p:last-child {
+      margin-top: 0.25rem;
+    }
+
+    /* Subsection Title */
+    .subsection-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.125rem;
+      color: var(--parchment);
+      margin-bottom: 1rem;
+      margin-top: 2rem;
+    }
+
+    .subsection-title:first-of-type {
+      margin-top: 0;
+    }
+
+    /* Architecture Box */
+    .architecture-box {
+      border: 1px solid rgba(201, 162, 39, 0.1);
+      background-color: var(--charcoal);
+      padding: 1.5rem;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .section-card {
+        padding: 1.5rem;
+      }
+
+      .architecture-row {
+        flex-wrap: wrap;
+      }
+
+      .architecture-row .label {
+        width: auto;
+        text-align: left;
+      }
+
+      .architecture-row .line {
+        display: none;
+      }
+
+      .architecture-row .desc {
+        width: 100%;
+        padding-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-content">
+      <h1 class="font-serif">Website Presentation</h1>
+      <a href="/" class="view-site-btn">View Live Site</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- Title Section -->
+    <section class="title-section">
+      <h1 class="font-serif">Hollow Knight: Silksong</h1>
+      <p>Fan Website Presentation</p>
+      <div class="title-divider"></div>
+    </section>
+
+    <!-- Section 1: Concept -->
+    <section class="section-card">
+      <div class="section-header">
+        <div class="section-number">1</div>
+        <h2 class="font-serif">Concept</h2>
+      </div>
+      <div class="section-content">
+        <p>
+          <strong>Project Goal:</strong> Create an immersive fan website for 
+          Hollow Knight: Silksong - the highly anticipated sequel to the acclaimed indie game Hollow Knight 
+          by Team Cherry.
+        </p>
+        <p>
+          <strong>Design Philosophy:</strong> The website captures the dark, 
+          atmospheric aesthetic of the game through a carefully crafted visual language featuring deep 
+          charcoal backgrounds, pale gold accents reminiscent of ancient silk, and crimson highlights 
+          that echo the protagonist Hornet and her silk abilities.
+        </p>
+        <p>
+          <strong>Target Audience:</strong> Existing Hollow Knight fans eagerly 
+          awaiting Silksong, potential new players interested in the game, and the broader indie gaming 
+          community seeking information about the upcoming release.
+        </p>
+
+        <div class="color-grid">
+          <div class="color-card">
+            <div class="color-swatch" style="background-color: #0a0a0c; border: 1px solid rgba(201, 162, 39, 0.4);"></div>
+            <span>Charcoal</span>
+            <p>#0a0a0c</p>
+          </div>
+          <div class="color-card">
+            <div class="color-swatch" style="background-color: #c9a227;"></div>
+            <span>Gold</span>
+            <p>#c9a227</p>
+          </div>
+          <div class="color-card">
+            <div class="color-swatch" style="background-color: #8b1538;"></div>
+            <span>Silk Red</span>
+            <p>#8b1538</p>
+          </div>
+          <div class="color-card">
+            <div class="color-swatch" style="background-color: #e8e4d9;"></div>
+            <span>Parchment</span>
+            <p>#e8e4d9</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Functionality -->
+    <section class="section-card">
+      <div class="section-header">
+        <div class="section-number">2</div>
+        <h2 class="font-serif">Functionality</h2>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>Interactive Navigation</h3>
+          <ul>
+            <li><span>-</span> Sticky header with glassmorphism effect</li>
+            <li><span>-</span> Smooth scroll navigation to page sections</li>
+            <li><span>-</span> Mobile-responsive hamburger menu with animations</li>
+            <li><span>-</span> Active section highlighting</li>
+          </ul>
+        </div>
+
+        <div class="feature-card">
+          <h3>Hero Section</h3>
+          <ul>
+            <li><span>-</span> Parallax scrolling background effect</li>
+            <li><span>-</span> Animated Hornet silhouette with ambient glow</li>
+            <li><span>-</span> Flowing silk thread SVG animations</li>
+            <li><span>-</span> Call-to-action buttons with hover effects</li>
+          </ul>
+        </div>
+
+        <div class="feature-card">
+          <h3>Video Trailer Modal</h3>
+          <ul>
+            <li><span>-</span> Fullscreen video modal overlay</li>
+            <li><span>-</span> Smooth open/close animations with Framer Motion</li>
+            <li><span>-</span> Auto-play on open with native controls</li>
+            <li><span>-</span> Click outside to close functionality</li>
+          </ul>
+        </div>
+
+        <div class="feature-card">
+          <h3>Background Music Player</h3>
+          <ul>
+            <li><span>-</span> Floating play/pause button (bottom-right)</li>
+            <li><span>-</span> Animated sound wave visualization</li>
+            <li><span>-</span> Looping audio with controlled volume</li>
+            <li><span>-</span> Gothic decorative styling</li>
+          </ul>
+        </div>
+
+        <div class="feature-card">
+          <h3>World of Pharloom Section</h3>
+          <ul>
+            <li><span>-</span> Location cards with hover reveal descriptions</li>
+            <li><span>-</span> Game statistics display (bosses, locations, etc.)</li>
+            <li><span>-</span> Pagination indicator dots</li>
+            <li><span>-</span> Scroll-triggered animations</li>
+          </ul>
+        </div>
+
+        <div class="feature-card">
+          <h3>Tools & Abilities Section</h3>
+          <ul>
+            <li><span>-</span> Interactive ability cards with glow effects</li>
+            <li><span>-</span> Custom SVG weapon/tool icons</li>
+            <li><span>-</span> Expand on hover with detailed descriptions</li>
+            <li><span>-</span> Staggered entrance animations</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Structure -->
+    <section class="section-card">
+      <div class="section-header">
+        <div class="section-number">3</div>
+        <h2 class="font-serif">Structure</h2>
+      </div>
+      <div class="section-content">
+        <!-- Tech Stack -->
+        <h3 class="subsection-title">Technology Stack</h3>
+        <div class="tech-grid">
+          <div class="tech-card">
+            <p>Next.js 15</p>
+            <p>React Framework</p>
+          </div>
+          <div class="tech-card">
+            <p>TypeScript</p>
+            <p>Type Safety</p>
+          </div>
+          <div class="tech-card">
+            <p>Tailwind CSS</p>
+            <p>Styling</p>
+          </div>
+          <div class="tech-card">
+            <p>Framer Motion</p>
+            <p>Animations</p>
+          </div>
+        </div>
+
+        <!-- File Structure -->
+        <h3 class="subsection-title">Project File Structure</h3>
+        <div class="file-structure">
+          <pre>v0-silksong-website/
+├── app/
+│   ├── globals.css          # Global styles & CSS variables
+│   ├── layout.tsx           # Root layout with fonts
+│   ├── page.tsx             # Main homepage
+│   └── presentation/
+│       └── page.tsx         # React presentation page
+│
+├── components/
+│   ├── navigation.tsx       # Sticky header & mobile menu
+│   ├── hero.tsx             # Hero section with video modal
+│   ├── world-section.tsx    # World of Pharloom cards
+│   ├── abilities-section.tsx # Tools & abilities grid
+│   ├── footer.tsx           # Footer with newsletter
+│   └── music-player.tsx     # Floating audio player
+│
+├── public/
+│   └── presentation.html    # This HTML presentation
+│
+├── tailwind.config.ts       # Tailwind configuration
+└── package.json             # Dependencies</pre>
+        </div>
+
+        <!-- Component Architecture -->
+        <h3 class="subsection-title">Component Architecture</h3>
+        <div class="architecture-box">
+          <div class="architecture-row">
+            <div class="label">page.tsx</div>
+            <div class="line"></div>
+            <div class="desc">Main entry point, imports all sections</div>
+          </div>
+          <div class="architecture-row">
+            <div class="label">Navigation</div>
+            <div class="line"></div>
+            <div class="desc">Fixed header, scroll-based styling</div>
+          </div>
+          <div class="architecture-row">
+            <div class="label">Hero</div>
+            <div class="line"></div>
+            <div class="desc">Parallax effects, video modal state</div>
+          </div>
+          <div class="architecture-row">
+            <div class="label">WorldSection</div>
+            <div class="line"></div>
+            <div class="desc">Location cards with data mapping</div>
+          </div>
+          <div class="architecture-row">
+            <div class="label">AbilitiesSection</div>
+            <div class="line"></div>
+            <div class="desc">Interactive ability grid display</div>
+          </div>
+          <div class="architecture-row">
+            <div class="label">Footer</div>
+            <div class="line"></div>
+            <div class="desc">Newsletter form, social links</div>
+          </div>
+          <div class="architecture-row">
+            <div class="label">MusicPlayer</div>
+            <div class="line"></div>
+            <div class="desc">Fixed position audio controller</div>
+          </div>
+        </div>
+
+        <!-- Page Sections Breakdown -->
+        <h3 class="subsection-title">Page Sections Overview</h3>
+        <div class="page-section-item">
+          <span class="number">01</span>
+          <div>
+            <p class="title">Navigation Bar</p>
+            <p class="description">
+              Fixed position header with logo, navigation links (Home, World, Abilities, News), 
+              and primary CTA button. Includes mobile hamburger menu.
+            </p>
+          </div>
+        </div>
+        <div class="page-section-item">
+          <span class="number">02</span>
+          <div>
+            <p class="title">Hero Section</p>
+            <p class="description">
+              Full-viewport hero with game title, Hornet character illustration, 
+              animated silk threads, and dual CTAs for purchase and trailer viewing.
+            </p>
+          </div>
+        </div>
+        <div class="page-section-item">
+          <span class="number">03</span>
+          <div>
+            <p class="title">World of Pharloom</p>
+            <p class="description">
+              Showcase of in-game locations with image cards, descriptions, 
+              and game statistics (boss count, location count, etc.).
+            </p>
+          </div>
+        </div>
+        <div class="page-section-item">
+          <span class="number">04</span>
+          <div>
+            <p class="title">New Tools & Abilities</p>
+            <p class="description">
+              Grid of ability cards showcasing Hornet's arsenal - weapons, 
+              tools, and special moves with icons and descriptions.
+            </p>
+          </div>
+        </div>
+        <div class="page-section-item">
+          <span class="number">05</span>
+          <div>
+            <p class="title">Footer</p>
+            <p class="description">
+              Newsletter subscription, quick navigation links, social media icons 
+              (Discord, YouTube, Twitter), and copyright information.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Summary -->
+    <section class="section-card summary-section">
+      <h2 class="font-serif">Summary</h2>
+      <p>
+        This Hollow Knight: Silksong fan website demonstrates modern web development practices 
+        with Next.js 15, combining atmospheric visual design with smooth animations and interactive 
+        elements. The modular component architecture ensures maintainability, while Framer Motion 
+        provides fluid user experiences. The design stays true to the game's gothic aesthetic 
+        while delivering a responsive, accessible experience across all devices.
+      </p>
+      <a href="/" class="cta-button">
+        View Live Website
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7" />
+        </svg>
+      </a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>Hollow Knight: Silksong Website Presentation</p>
+      <p>Fan Project - Not affiliated with Team Cherry</p>
+    </footer>
+  </div>
+</body>
+</html>
