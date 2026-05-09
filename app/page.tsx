@@ -3,6 +3,7 @@ import { Hero } from "@/components/hero"
 import { WorldSection } from "@/components/world-section"
 import { AbilitiesSection } from "@/components/abilities-section"
 import { Footer } from "@/components/footer"
+import { MusicPlayer } from "@/components/music-player"
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <WorldSection />
       <AbilitiesSection />
       <Footer />
+      <MusicPlayer />
     </main>
   )
 }
