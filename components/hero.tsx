@@ -1,11 +1,12 @@
 "use client"
 
-import { useRef } from "react"
-import { motion, useScroll, useTransform } from "framer-motion"
+import { useRef, useState } from "react"
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 import Link from "next/link"
 
 export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null)
+  const [isVideoOpen, setIsVideoOpen] = useState(false)
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
@@ -206,13 +207,13 @@ export function Hero() {
             </span>
           </Link>
           
-          <Link
-            href="#trailer"
-            className="group relative px-8 py-3 border border-gold/30 text-foreground/80 hover:border-gold/60 hover:text-foreground transition-all duration-300 uppercase tracking-[0.2em] text-sm"
+          <button
+            onClick={() => setIsVideoOpen(true)}
+            className="group relative px-8 py-3 border border-gold/30 text-foreground/80 hover:border-gold/60 hover:text-foreground transition-all duration-300 uppercase tracking-[0.2em] text-sm cursor-pointer"
           >
             Watch Trailer
             <span className="absolute -bottom-px left-1/2 -translate-x-1/2 w-0 h-px bg-gold transition-all duration-300 group-hover:w-full" />
-          </Link>
+          </button>
         </motion.div>
       </motion.div>
 
@@ -234,6 +235,55 @@ export function Hero() {
           </svg>
         </motion.div>
       </motion.div>
+
+      {/* Video Modal */}
+      <AnimatePresence>
+        {isVideoOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-charcoal/95 backdrop-blur-sm"
+            onClick={() => setIsVideoOpen(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="relative w-full max-w-5xl mx-4 aspect-video"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setIsVideoOpen(false)}
+                className="absolute -top-12 right-0 text-foreground/60 hover:text-foreground transition-colors cursor-pointer"
+              >
+                <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M18 6L6 18M6 6l12 12" />
+                </svg>
+              </button>
+
+              {/* Video Player */}
+              <div className="relative w-full h-full border-2 border-gold/30 bg-charcoal overflow-hidden">
+                <video
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/5285755d-19e6-4a1a-9af8-7f3004030924-1080p-1778283832318-DBE02gcjGfbg0azh3ON8U0IeDvkOI9.mp4"
+                  className="w-full h-full object-contain"
+                  controls
+                  autoPlay
+                  playsInline
+                />
+              </div>
+
+              {/* Decorative Corners */}
+              <div className="absolute -top-2 -left-2 w-8 h-8 border-t-2 border-l-2 border-gold/60" />
+              <div className="absolute -top-2 -right-2 w-8 h-8 border-t-2 border-r-2 border-gold/60" />
+              <div className="absolute -bottom-2 -left-2 w-8 h-8 border-b-2 border-l-2 border-gold/60" />
+              <div className="absolute -bottom-2 -right-2 w-8 h-8 border-b-2 border-r-2 border-gold/60" />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   )
 }
